@@ -1,0 +1,60 @@
+include: package:flutter_lints/flutter.yaml
+
+linter:
+  rules:
+    # ── 错误预防 ──
+    - avoid_dynamic_calls
+    - avoid_type_to_string
+    - cancel_subscriptions
+    - close_sinks
+    - no_adjacent_strings_in_list
+    - use_build_context_synchronously
+
+    # ── 代码风格 ──
+    - prefer_single_quotes
+    - prefer_const_constructors
+    - prefer_const_declarations
+    - prefer_const_literals_to_create_immutables
+    - sort_constructors_first
+    - unnecessary_import
+    - unnecessary_library_name
+    - prefer_relative_imports
+    - always_put_required_named_parameters_first
+    - sort_unnamed_constructors_first
+
+    # ── 最佳实践 ──
+    - avoid_print
+    - avoid_relative_lib_imports
+    - avoid_shadowing_type_parameters
+    - no_literal_bool_comparisons
+    - prefer_adjacent_string_concatenation
+    - prefer_conditional_assignment
+    - use_super_parameters
+    - avoid_function_literals_in_foreach_calls
+    - avoid_unnecessary_containers
+    - prefer_collection_literals
+    - prefer_foreach
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - sized_box_for_whitespace
+    - use_full_hex_values_for_flutter_colors
+    - use_key_in_widget_constructors
+
+    # ── 文档（仅公开 API）──
+    - public_member_api_docs
+    - package_api_docs
+
+    # ── 空值安全 ──
+    - avoid_bool_literals_in_conditional_expressions
+
+analyzer:
+  errors:
+    # 降级处理：这俩在现有代码中较普遍，先 warn
+    avoid_print: warning
+    public_member_api_docs: ignore
+    package_api_docs: ignore
+    use_key_in_widget_constructors: warning
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "build/**"
