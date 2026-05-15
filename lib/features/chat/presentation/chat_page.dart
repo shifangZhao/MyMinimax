@@ -2766,7 +2766,7 @@ $labels
           isStreaming: isStreaming,
           onBacktrack: msg.isUser ? () => _backtrackTo(msg) : null,
           isBacktrackPending: _backtrackTargetId == msg.id,
-          onLongPress: () => _onMessageLongPress(msg, isLastUserMessage));
+          onLongPress: null);
       });
   }
 
