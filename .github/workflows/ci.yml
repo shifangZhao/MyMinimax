@@ -43,9 +43,9 @@ jobs:
       - run: flutter test --reporter expanded
 
   build-android:
-    name: Build Android APK
+    name: Build Release APKs
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     needs: test
     steps:
       - uses: actions/checkout@v4
@@ -58,11 +58,17 @@ jobs:
           flutter-version: ${{ env.FLUTTER_VERSION }}
           cache: true
       - run: flutter pub get
-      - name: Build debug APK
-        run: flutter build apk --debug
-      - name: Upload APK
+      - name: Build release APKs
+        run: flutter build apk --release --target-platform android-arm64,android-arm --split-per-abi
+      - name: Upload arm64 APK
         uses: actions/upload-artifact@v4
         with:
-          name: app-debug.apk
-          path: build/app/outputs/flutter-apk/app-debug.apk
-          retention-days: 7
+          name: app-arm64-v8a-release.apk
+          path: build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
+          retention-days: 30
+      - name: Upload armv7 APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-armeabi-v7a-release.apk
+          path: build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
+          retention-days: 30

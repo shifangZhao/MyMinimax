@@ -58,3 +58,14 @@ app.*.map.json
 # IDE
 .vscode/
 .idea/
+
+# Gradle cache
+android/.gradle/
+android/.kotlin/
+
+# Android local config
+android/local.properties
+
+# iOS/macOS ephemeral
+**/Flutter/ephemeral/
+**/Flutter/.last_build_id
